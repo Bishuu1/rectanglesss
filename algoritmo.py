@@ -14,12 +14,12 @@ def CalcularRectangulos(x, y, a, b, memo=None):
         return memo[(x, y)]
     best1 = 0
     if a <= x and b <= y:
-        best1 = 1 + CalcularRectangulos(x - a, y, a, b, memo) + \
-            CalcularRectangulos(a, y - b, a, b, memo)
+        best1 = 1 + CalcularRectangulos(x - a, b, a, b, memo) + \
+            CalcularRectangulos(x, y - b, a, b, memo)
     best2 = 0
     if b <= x and a <= y:
-        best2 = 1 + CalcularRectangulos(x - b, y, a, b, memo) + \
-            CalcularRectangulos(b, y - a, a, b, memo)
+        best2 = 1 + CalcularRectangulos(x - b, a, a, b, memo) + \
+            CalcularRectangulos(x, y - a, a, b, memo)
     best = max(best1, best2)
     memo[(x, y)] = best
     return best
